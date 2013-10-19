@@ -1,0 +1,238 @@
+\documentclass[10pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{hyperref}
+
+% To make this come out properly in landscape mode, do one of the following
+% 1.
+%  pdflatex latexsheet.tex
+%
+% 2.
+%  latex latexsheet.tex
+%  dvips -P pdf  -t landscape latexsheet.dvi
+%  ps2pdf latexsheet.ps
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+     \Large{\textbf{Tig Cheat Sheet}} \\
+\end{center}
+
+\section{Switch between views}
+\begin{tabular}{@{}ll ll@{}}
+\verb!m! & \verb!Main! view. & \verb!f! & \verb!File! blob view.\\
+\verb!d! & \verb!Diff! view. & \verb!B! & \verb!Blame! view.\\
+\verb!l! & \verb!Log! view. & \verb!H! & \verb!Branch! view.\\
+\verb!c! & \verb!Stage! view. & \verb!S! & \verb!Status! view.\\
+\verb!p! & \verb!Pager! view. & \verb!y! & \verb!Stash! view.\\
+\verb!t! & \verb!Directory! tree view. & \verb!h! & \verb!Help! view\\
+\end{tabular}
+
+\section{Cursor Navigation}
+\begin{tabular}{@{}ll@{}}
+\verb!k! & Move cursor one line up. \\
+\verb!j! & Move cursor one line down. \\
+\verb!PgUp,-,a! & Move cursor one page up. \\
+\verb!PgDown, Space! & Move cursor one page down. \\
+\verb!End! & Jump to last line. \\
+\verb!Home! & Jump to first line. \\
+\end{tabular}
+
+\section{View Manipulation}
+\begin{tabular}{@{}lp{7cm}@{}}
+\verb!q! & Close current view, return to previous one until last and quit. \\
+\verb!Q! & Close all the views and quit. \\
+\verb!Enter! & Split the view to show the commit diff / In the diff view, scroll the view one line down. \\
+\verb!Tab! & Switch to next view. \\
+\verb!R! & Reload and refresh the current view. \\
+\verb!O! & Maximize the current view to fill the whole display. \\
+\verb!Up! & Move the cursor one line up. In diff view from the main view, change the cursor to point to the previous commit and update the diff view to display it. \\
+\verb!Down! & Similar to Up but will move down. \\
+\verb!,! & Move to parent. \\
+\end{tabular}
+
+\section{Scrolling}
+\begin{tabular}{@{}ll@{}}
+\verb!Insert! & Scroll view one line up. \\
+\verb!Delete! & Scroll view one line down. \\
+\verb!w! & Scroll view one page up. \\
+\verb!s! & Scroll view one page down. \\
+\verb!Left! & Scroll view one column left. \\
+\verb!Right! & Scroll view one column right. \\
+\verb!|! & Scroll view to the first column. \\
+\end{tabular}
+
+\section{Searching}
+\begin{tabular}{@{}ll@{}}
+\verb!/! & Search the view using RegExp. \\
+\verb!?! & Search backwards. \\
+\verb!n! & Find next match. \\
+\verb!N! & Find previous match. \\
+\end{tabular}
+
+\section{View Specific Actions}
+\begin{tabular}{@{}lp{7cm}@{}}
+\verb!u! & Update status of file.\\
+\verb!M! & Resolve unmerged file by launching git-mergetool. \\
+\verb#!# & Checkout file (reset its content). \\
+\verb!1! & Stage single diff line. \\
+\verb!@! & Move to next chunk in the stage view. \\
+\verb!]! & Increase the diff context. \\
+\verb![! & Decrease the diff context. \\
+\end{tabular}
+
+\section{Main View (m)}
+\begin{tabular}{@{}lp{7cm}@{}}
+\verb!C! & Cherry-pick the current commit (e.g. git cherry-pick  \%(commit)). \\
+\end{tabular}
+
+\section{Diff View (d)}
+\begin{tabular}{@{}lp{7cm}@{}}
+\verb!k! & Move cursor one line up. \\
+\verb!j! & Move cursor one line down. \\
+\verb!Up! & Go to previous commit and update the diff view. \\
+\verb!Down! & Go to next commit and update the diff view. \\
+\end{tabular}
+
+\section{Status View (S)}
+\begin{tabular}{@{}lp{7cm}@{}}
+\verb!u! & Add or stage file.\\
+\verb!M! & Resolve unmerged file by launching git-mergetool. \\
+\verb#!# & Checkout file (reset its content). \\
+\verb!1! & Stage single diff line. \\
+\verb!@! & Move to next chunk in the stage view. \\
+\verb!]! & Increase the diff context. \\
+\verb![! & Decrease the diff context. \\
+\verb!C! & Commit (e.g. git commit) \\
+\end{tabular}
+
+\section{Branch View(H)}
+\begin{tabular}{@{}lp{7cm}@{}}
+\verb!Enter! & Open commit log view. \\
+\verb!C! & Checkout current branch (e.g. git checkout \%(branch)). \\
+\end{tabular}
+
+\section{Stage View (c)}
+\begin{tabular}{@{}lp{7cm}@{}}
+\verb!u! & Stage only chunk for next commit (on a diff chunk), otherwise stage all changes. \\
+\end{tabular}
+
+\section{Blame View (B)}
+\begin{tabular}{@{}lp{7cm}@{}}
+\verb!,! & Load blame for the parent commit (Parent is queried for merges). \\
+\end{tabular}
+
+\section{Tree View (t)}
+\begin{tabular}{@{}lp{7cm}@{}}
+\verb!,! & Switch to the parent directory. \\
+\end{tabular}
+
+\section{Misc / Options}
+\begin{tabular}{@{}lp{7cm}@{}}
+\verb!Q! & Quit. \\
+\verb!r! & Redraw screen. \\
+\verb!z! & Stop all background loading. e.g. a repository with a long history without limiting the revision log. \\
+\verb!v! & Show version. \\
+\verb!o! & Open option menu \\
+\verb!.! & Toggle line numbers on/off. \\
+\verb!D! & Toggle date display on/off/short/relative/local. \\
+\verb!A! & Toggle author display on/off/abbreviated/email/email user name. \\
+\verb!g! & Toggle revision graph visualization on/off. \\
+\verb!~! & Toggle (line) graphics mode \\
+\verb!F! & Toggle reference display on/off (tag and branch names). \\
+\verb!W! & Toggle ignoring whitespace on/off for diffs \\
+\verb!X! & Toggle commit ID display on/off \\
+\verb!%! & Toggle file filtering in order to see the full diff instead of only the diff concerning the currently selected file. \\
+\verb!$! & Toggle highlighting of commit title overflow. \\
+\verb!:! & Open prompt. This allows you to specify what command to run. \\
+\verb!e! & Open file in editor. \\
+\verb!G! & Run garbage collection (e.g. git gc) \\
+\end{tabular}
+
+\section{Prompt}
+\begin{tabular}{@{}ll@{}}
+\textbf{:\textless number\textgreater} & Jump to the specific line number, e.g. :80. \\
+\textbf{:\textless sha\textgreater} & Jump to a specific commit, e.g. :2f12bcc. \\
+\textbf{:\textless x\textgreater} & Execute the corresponding key binding, e.g. :q. \\
+\textbf{:!\textless command\textgreater} & Run a command, e.g. :!git log -p. \\
+\textbf{:\textless action\textgreater} & Execute a Tig command, e.g. :edit. \\
+\end{tabular}
+
+
+\section{External Commands}
+Provide a way to easily execute a script or program.
+Bound to keys and use information from the current browsing state (e.g current commit ID).
+
+Built-in external commands:
+\begin{tabular}{@{}lll@{}}
+\verb!main! & \verb!C! & git cherry-pick  \%(commit)\\
+\verb!status! & \verb!C! & git commit \\
+\verb!generic! & \verb!G! & git gc \\
+\end{tabular}
+
+For custom external commands, see \url{http://jonas.nitro.dk/tig/tigrc.5.html}
+
+\rule{0.3\linewidth}{0.25pt}
+\scriptsize
+
+tig project:\url{https://github.com/jonas/tig}
+tig manual:\url{http://jonas.nitro.dk/tig/manual.html}
+\linebreak
+CC BY-SA Philippe Miossec \url{https://github.com/pmiossec/tig-cheat-sheet}
+
+\end{multicols}
+\end{document}
