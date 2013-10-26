@@ -4,6 +4,9 @@
 \usepackage[landscape]{geometry}
 \usepackage{hyperref}
 
+% Build a pdf online with:
+% http://latex.informatik.uni-halle.de/latex-online/latex.php?spw=2&id=626837_hRLskRF34GHL
+
 % To make this come out properly in landscape mode, do one of the following
 % 1.
 %  pdflatex latexsheet.tex
@@ -73,46 +76,39 @@
 \end{center}
 
 \section{Switch between views}
-\begin{tabular}{@{}ll ll@{}}
-\verb!m! & \verb!Main! view. & \verb!f! & \verb!File! blob view.\\
-\verb!d! & \verb!Diff! view. & \verb!B! & \verb!Blame! view.\\
-\verb!l! & \verb!Log! view. & \verb!H! & \verb!Branch! view.\\
-\verb!c! & \verb!Stage! view. & \verb!S! & \verb!Status! view.\\
-\verb!p! & \verb!Pager! view. & \verb!y! & \verb!Stash! view.\\
-\verb!t! & \verb!Directory! tree view. & \verb!h! & \verb!Help! view\\
+\begin{tabular}{@{}ll ll ll@{}}
+\verb!m! & \verb!Main!. & \verb!p! & \verb!Pager!. & \verb!t! & \verb!Directory! tree.\\
+\verb!d! & \verb!Diff!. & \verb!H! & \verb!Branch!. & \verb!f! & \verb!File! blob.\\
+\verb!l! & \verb!Log!. & \verb!S! & \verb!Status!. & \verb!y! & \verb!Stash!.\\
+\verb!B! & \verb!Blame!. & \verb!c! & \verb!Stage!. & \verb!h! & \verb!Help!.\\
 \end{tabular}
 
 \section{Cursor Navigation}
 \begin{tabular}{@{}ll@{}}
-\verb!k! & Move cursor one line up. \\
-\verb!j! & Move cursor one line down. \\
+\verb!k! / \verb!j! & Move cursor one line \verb!up! / \verb!down!. \\
 \verb!PgUp,-,a! & Move cursor one page up. \\
 \verb!PgDown, Space! & Move cursor one page down. \\
-\verb!End! & Jump to last line. \\
-\verb!Home! & Jump to first line. \\
+\verb!Home! / \verb!End! & Jump to \verb!first! / \verb!last! line. \\
 \end{tabular}
 
 \section{View Manipulation}
-\begin{tabular}{@{}lp{7cm}@{}}
-\verb!q! & Close current view, return to previous one until last and quit. \\
-\verb!Q! & Close all the views and quit. \\
+\begin{tabular}{@{}lp{6.5cm}@{}}
+\verb!q! & Close current view, go to previous one until last. \\
+\verb!Q! & Quit tig. \\
 \verb!Enter! & Split the view to show the commit diff / In the diff view, scroll the view one line down. \\
 \verb!Tab! & Switch to next view. \\
 \verb!R! & Reload and refresh the current view. \\
 \verb!O! & Maximize the current view to fill the whole display. \\
-\verb!Up! & Move the cursor one line up. In diff view from the main view, change the cursor to point to the previous commit and update the diff view to display it. \\
+\verb!Up! & Move the cursor one line up. In diff view from the main view, point to the previous commit and update the diff view to display it. \\
 \verb!Down! & Similar to Up but will move down. \\
 \verb!,! & Move to parent. \\
 \end{tabular}
 
 \section{Scrolling}
 \begin{tabular}{@{}ll@{}}
-\verb!Insert! & Scroll view one line up. \\
-\verb!Delete! & Scroll view one line down. \\
-\verb!w! & Scroll view one page up. \\
-\verb!s! & Scroll view one page down. \\
-\verb!Left! & Scroll view one column left. \\
-\verb!Right! & Scroll view one column right. \\
+\verb!Insert! / \verb!Delete! & Scroll view one line \verb!up! / \verb!down!. \\
+\verb!w! / \verb!s! & Scroll view one page \verb!up! / \verb!down!. \\
+\verb!Left! / \verb!Right!& Scroll view one column \verb!left! / \verb!right!. \\
 \verb!|! & Scroll view to the first column. \\
 \end{tabular}
 
@@ -120,98 +116,91 @@
 \begin{tabular}{@{}ll@{}}
 \verb!/! & Search the view using RegExp. \\
 \verb!?! & Search backwards. \\
-\verb!n! & Find next match. \\
-\verb!N! & Find previous match. \\
+\verb!n! / \verb!N! & Find \verb!next! / \verb!previous! match. \\
 \end{tabular}
 
 \section{View Specific Actions}
-\begin{tabular}{@{}lp{7cm}@{}}
+\begin{tabular}{@{}lp{6.5cm}@{}}
 \verb!u! & Update status of file.\\
 \verb!M! & Resolve unmerged file by launching git-mergetool. \\
 \verb#!# & Checkout file (reset its content). \\
 \verb!1! & Stage single diff line. \\
 \verb!@! & Move to next chunk in the stage view. \\
-\verb!]! & Increase the diff context. \\
-\verb![! & Decrease the diff context. \\
+\verb!]! / \verb![! & \verb!Increase! / \verb!Decrease! the diff context. \\
 \end{tabular}
 
 \section{Main View (m)}
-\begin{tabular}{@{}lp{7cm}@{}}
+\begin{tabular}{@{}lp{6.5cm}@{}}
 \verb!C! & Cherry-pick the current commit (e.g. git cherry-pick  \%(commit)). \\
 \end{tabular}
 
 \section{Diff View (d)}
-\begin{tabular}{@{}lp{7cm}@{}}
-\verb!k! & Move cursor one line up. \\
-\verb!j! & Move cursor one line down. \\
-\verb!Up! & Go to previous commit and update the diff view. \\
-\verb!Down! & Go to next commit and update the diff view. \\
+\begin{tabular}{@{}lp{6.5cm}@{}}
+\verb!k! / \verb!j! & Move cursor one line \verb!up! / \verb!down! \\
+\verb!Up! / \verb!Down! & Go to \verb!previous! / \verb!next! commit and update the diff view. \\
+\end{tabular}
+
+\section{Blame View (B)}
+\begin{tabular}{@{}lp{6.5cm}@{}}
+\verb!,! & Load blame for the parent commit (Parent is queried for merges). \\
+\end{tabular}
+
+\section{Branch View(H)}
+\begin{tabular}{@{}lp{6.5cm}@{}}
+\verb!Enter! & Open commit log view. \\
+\verb!C! & Checkout current branch (e.g. git checkout \%(branch)). \\
 \end{tabular}
 
 \section{Status View (S)}
-\begin{tabular}{@{}lp{7cm}@{}}
+\begin{tabular}{@{}lp{6.5cm}@{}}
 \verb!u! & Add or stage file.\\
 \verb!M! & Resolve unmerged file by launching git-mergetool. \\
 \verb#!# & Checkout file (reset its content). \\
 \verb!1! & Stage single diff line. \\
 \verb!@! & Move to next chunk in the stage view. \\
-\verb!]! & Increase the diff context. \\
-\verb![! & Decrease the diff context. \\
+\verb!]! / \verb![! & \verb!Increase! / \verb!Decrease! the diff context. \\
 \verb!C! & Commit (e.g. git commit) \\
 \end{tabular}
 
-\section{Branch View(H)}
-\begin{tabular}{@{}lp{7cm}@{}}
-\verb!Enter! & Open commit log view. \\
-\verb!C! & Checkout current branch (e.g. git checkout \%(branch)). \\
-\end{tabular}
-
 \section{Stage View (c)}
-\begin{tabular}{@{}lp{7cm}@{}}
+\begin{tabular}{@{}lp{6.5cm}@{}}
 \verb!u! & Stage only chunk for next commit (on a diff chunk), otherwise stage all changes. \\
 \end{tabular}
 
-\section{Blame View (B)}
-\begin{tabular}{@{}lp{7cm}@{}}
-\verb!,! & Load blame for the parent commit (Parent is queried for merges). \\
-\end{tabular}
-
 \section{Tree View (t)}
-\begin{tabular}{@{}lp{7cm}@{}}
+\begin{tabular}{@{}lp{6.5cm}@{}}
 \verb!,! & Switch to the parent directory. \\
 \end{tabular}
 
-\section{Misc / Options}
-\begin{tabular}{@{}lp{7cm}@{}}
-\verb!Q! & Quit. \\
-\verb!r! & Redraw screen. \\
-\verb!z! & Stop all background loading. e.g. a repository with a long history without limiting the revision log. \\
-\verb!v! & Show version. \\
-\verb!o! & Open option menu \\
-\verb!.! & Toggle line numbers on/off. \\
-\verb!D! & Toggle date display on/off/short/relative/local. \\
-\verb!A! & Toggle author display on/off/abbreviated/email/email user name. \\
-\verb!g! & Toggle revision graph visualization on/off. \\
-\verb!~! & Toggle (line) graphics mode \\
-\verb!F! & Toggle reference display on/off (tag and branch names). \\
-\verb!W! & Toggle ignoring whitespace on/off for diffs \\
-\verb!X! & Toggle commit ID display on/off \\
-\verb!%! & Toggle file filtering in order to see the full diff instead of only the diff concerning the currently selected file. \\
-\verb!$! & Toggle highlighting of commit title overflow. \\
-\verb!:! & Open prompt. This allows you to specify what command to run. \\
-\verb!e! & Open file in editor. \\
-\verb!G! & Run garbage collection (e.g. git gc) \\
-\end{tabular}
-
-\section{Prompt}
+\section{Prompt (:)}
 \begin{tabular}{@{}ll@{}}
 \textbf{:\textless number\textgreater} & Jump to the specific line number, e.g. :80. \\
 \textbf{:\textless sha\textgreater} & Jump to a specific commit, e.g. :2f12bcc. \\
 \textbf{:\textless x\textgreater} & Execute the corresponding key binding, e.g. :q. \\
-\textbf{:!\textless command\textgreater} & Run a command, e.g. :!git log -p. \\
+\textbf{:!\textless cmd\textgreater} & Run a command, e.g. :!git log -p. \\
 \textbf{:\textless action\textgreater} & Execute a Tig command, e.g. :edit. \\
 \end{tabular}
 
+\section{Misc / Options}
+\begin{tabular}{@{}lp{6.5cm}@{}}
+\verb!r! & Redraw screen. \\
+\verb!z! & Stop all background loading (a repository with a long history without limiting the revision log) \\
+\verb!v! & Show version. \\
+\verb!o! & Open option menu \\
+\verb!.! & Toggle line numbers on/off. \\
+\verb!D! & Toggle date display on/off/short/relative/local. \\
+\verb!A! & Toggle author display on/off/abbreviated /email/email user name. \\
+\verb!g! & Toggle revision graph visualization on/off. \\
+\verb!~! & Toggle (line) graphics mode \\
+\verb!F! & Toggle reference (tag and branch) display on/off. \\
+\verb!W! & Toggle ignoring whitespace on/off for diffs \\
+\verb!X! & Toggle commit ID display on/off \\
+\verb!%! & Toggle file filtering in order to see the full diff instead of only the diff concerning the currently selected file. \\
+\verb!$! & Toggle highlighting of commit title overflow. \\
+\verb!:! & Open prompt to run a command. \\
+\verb!e! & Open file in editor. \\
+\verb!G! & Run garbage collection (e.g. git gc) \\
+\end{tabular}
 
 \section{External Commands}
 Provide a way to easily execute a script or program.
@@ -224,15 +213,65 @@ Built-in external commands:
 \verb!generic! & \verb!G! & git gc \\
 \end{tabular}
 
-For custom external commands, see \url{http://jonas.nitro.dk/tig/tigrc.5.html}
+
+\section{Set your custom bind Commands}
+
+In the .gitconfig file, under the \verb![tig "bind"]! section, use pattern:
+keymap = key action
+
+\begin{tabular}{@{}lp{6.5cm}@{}}
+\verb!Keymaps! & main, diff, log, help, pager, status, stage, tree, blob, blame, branch, and generic (global keymap)\\
+\verb!Special Keys! & Enter, Space, Backspace, Tab, Escape, Left, Right, Up, Down, Insert, Delete, Hash, Home, End, PageUp, PageDown, F1,..., F12\\
+\end{tabular}
+note: use \^{} to set a keymap with the ctrl key (\^{}j for ctrl-j)
+
+\subsection{External command control flags:}
+\begin{tabular}{@{}lp{6.5cm}@{}}
+\verb!@! & Run the command in background (no output).\\
+\verb!?! & Prompt the user before running the command.\\
+\verb!<! & Exit Tig after running the command.\\
+\end{tabular}
+
+
+\subsection{Browsing state variables:}
+\begin{tabular}{@{}lp{6.5cm}@{}}
+\verb!%(head)! & Currently viewed head ID. Defaults to HEAD\\
+\verb!%(commit)! & Currently selected commit ID.\\
+\verb!%(blob)! & Currently selected blob ID.\\
+\verb!%(branch)! & Currently selected branch name.\\
+\verb!%(stash)! & Currently selected stash name.\\
+\verb!%(directory)! & Current directory path in the tree view; empty for the root directory.\\
+\verb!%(file)! & Currently selected file.\\
+\verb!%(ref)! & Reference given to blame or HEAD if undefined.\\
+\verb!%(revargs)! & Revision arguments passed on the command line.\\
+\verb!%(fileargs)! & File arguments passed on the command line.\\
+\verb!%(diffargs)! & Diff options passed on the command line.\\
+\verb!%(prompt)! & Prompt for the argument value.\\
+\end{tabular}
+
+\begin{verbatim}
+ex:
+[tig "bind"]
+    # 'unbind' the default quit key binding
+    main = Q none
+    # Cherry-pick current commit onto current branch
+    generic = C !git cherry-pick %(commit)
+    # Amend last commit in status view
+    #(prompting user and exit after)
+    status = A !?<git commit --amend
+\end{verbatim}
+
+For more informations on custom external commands, see \url{http://jonas.nitro.dk/tig/tigrc.5.html}
+
 
 \rule{0.3\linewidth}{0.25pt}
 \scriptsize
 
 tig project:\url{https://github.com/jonas/tig}
+\linebreak
 tig manual:\url{http://jonas.nitro.dk/tig/manual.html}
 \linebreak
-CC BY-SA Philippe Miossec \url{https://github.com/pmiossec/tig-cheat-sheet}
+CC BY-SA P. Miossec \url{https://github.com/pmiossec/tig-cheat-sheet}
 
 \end{multicols}
 \end{document}
