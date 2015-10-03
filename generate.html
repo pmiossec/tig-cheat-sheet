@@ -1,0 +1,45 @@
+<?xml version="4.0" encoding="UTF-8"><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <title>Tig cheat sheat</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+
+<form method="post" action="https://tex.mendelu.cz/en/" enctype="multipart/form-data">
+
+<textarea name="pole" id="latexText" style="display:none;" ></textarea>
+<input type="hidden" name="preklad" value="latex" />
+<input type="hidden" name="pruchod" value="1"/>
+<input type="hidden" name="pdf" value="PDF" />
+<p style="text-align: center">
+<input id="btnGenerate" type="submit" value="Generate the last version of the 'tig cheat sheat'!" disabled="true" />
+</p>
+<p style="text-align: center">
+Note: Due to the fact that the generation is done by a third party website ( https://tex.mendelu.cz/en/ ), <br/>
+your browser should warn you that the page attempts a 'cross-script scripting (XSS)'. <br/>
+If you really want to generate the cheat sheet, you will have to ignore the warning and to continue... ;) 
+</p>
+</form>
+  <script>
+   var xmlhttp = new XMLHttpRequest();
+   xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+           if(xmlhttp.status == 200){
+               document.getElementById("latexText").innerHTML = xmlhttp.responseText;
+               document.getElementById("btnGenerate").disabled = false;
+           }
+           else if(xmlhttp.status == 400) {
+              alert('There was an error 400')
+           }
+           else {
+               alert('something else other than 200 was returned')
+           }
+        }
+    }
+
+    xmlhttp.open("GET", "http://raw.githubusercontent.com/pmiossec/tig-cheat-sheet/master/tig-cheat-sheet.tex", true);
+    xmlhttp.send();
+    </script>
+</body>
+</html>
